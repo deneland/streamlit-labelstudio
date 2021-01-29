@@ -15,12 +15,7 @@ ls_div.setAttribute("id", "label-studio");
  */
 function onRender(event: Event): void {
   const data = (event as CustomEvent<RenderData>).detail
-
-  console.log(data.args["config"])
-  console.log(data.args["interfaces"])
-  console.log(data.args["user"])
-  console.log(data.args["task"])
-
+   
   var ls = new LabelStudio('label-studio', {
     config: data.args["config"],
     interfaces: data.args["interfaces"][0],
@@ -35,15 +30,10 @@ function onRender(event: Event): void {
     },
   
     onSubmitCompletion: function(ls, completion) {
-      console.log(completion)
       completion = JSON.parse(JSON.stringify(completion));
       Streamlit.setComponentValue(completion)
     },
   
-    onUpdateCompletion: function(ls, completion) {
-      console.log(completion)
-      // Streamlit.setComponentValue(completion)
-    }
   
   });
 
@@ -53,6 +43,7 @@ function onRender(event: Event): void {
   // there's no harm in doing it redundantly.)
   Streamlit.setFrameHeight()
 }
+
 
 // Attach our `onRender` handler to Streamlit's render event.
 Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)
