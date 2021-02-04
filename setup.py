@@ -2,13 +2,13 @@ import setuptools
 
 setuptools.setup(
     name="streamlit-labelstudio",
-    version="0.0.1",
+    version="0.0.3",
     author="",
     author_email="",
-    description="",
-    long_description="",
+    description="A Streamlit component that provides an annotation interface using the LabelStudio Frontend",
+    long_description="A Streamlit component that provides an annotation interface using the LabelStudio Frontend",
     long_description_content_type="text/plain",
-    url="",
+    url="https://github.com/deneland/streamlit-labelstudio",
     packages=setuptools.find_packages(),
     include_package_data=True,
     classifiers=[],
