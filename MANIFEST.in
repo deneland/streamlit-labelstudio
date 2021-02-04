@@ -1,1 +1,1 @@
-recursive-include streamlit-labelstudio/frontend/build *
+recursive-include streamlit_labelstudio/frontend/build *
