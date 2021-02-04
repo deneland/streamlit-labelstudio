@@ -1,9 +1,13 @@
 import streamlit as st
 from streamlit_labelstudio import st_labelstudio
 
+st.set_page_config(layout='wide')
+
 config = """
       <View>
-        <Image name="img" value="$image" brightnessControl="true" contrastControl="true" zoomControl="true" rotateControl="true"></Image>
+        <View style="padding: 25px; box-shadow: 2px 2px 8px #AAA;">
+          <Image name="img" value="$image" width="100%" maxWidth="100%" brightnessControl="true" contrastControl="true" zoomControl="true" rotateControl="true"></Image>
+        </View>
         <RectangleLabels name="tag" toName="img">
           <Label value="Hello"></Label>
           <Label value="Moon"></Label>
@@ -15,11 +19,11 @@ interfaces = [
   "panel",
   "update",
   "controls",
-  # "side-column",
-  # "completions:menu",
-  # "completions:add-new",
-  # "completions:delete",
-  # "predictions:menu",
+  "side-column",
+  "completions:menu",
+  "completions:add-new",
+  "completions:delete",
+  "predictions:menu",
 ],
 
 user = {
@@ -37,11 +41,7 @@ task = {
   }
 }
 
-st.title('Labelstudio component')
-
-# Store and display the return value of your custom component
 results_raw = st_labelstudio(config, interfaces, user, task)
-
 
 if results_raw is not None:
   areas = [v for k, v in results_raw['areas'].items()]

@@ -15,28 +15,29 @@ ls_div.setAttribute("id", "label-studio");
  */
 function onRender(event: Event): void {
   const data = (event as CustomEvent<RenderData>).detail
-   
+  
   var ls = new LabelStudio('label-studio', {
     config: data.args["config"],
     interfaces: data.args["interfaces"][0],
     user: data.args["user"][0],
     task: data.args["task"],
-  
+    
     onLabelStudioLoad: function(ls) {
       var c = ls.completionStore.addCompletion({
         userGenerate: true
       });
       ls.completionStore.selectCompletion(c.id);
     },
-  
+    
     onSubmitCompletion: function(ls, completion) {
+      console.log(ls)
       completion = JSON.parse(JSON.stringify(completion));
       Streamlit.setComponentValue(completion)
     },
-  
-  
+    
+    
   });
-
+  
   // We tell Streamlit to update our frameHeight after each render event, in
   // case it has changed. (This isn't strictly necessary for the example
   // because our height stays fixed, but this is a low-cost function, so
@@ -47,7 +48,6 @@ function onRender(event: Event): void {
 
 // Attach our `onRender` handler to Streamlit's render event.
 Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)
-
 // Tell Streamlit we're ready to start receiving data. We won't get our
 // first RENDER_EVENT until we call this function.
 Streamlit.setComponentReady()

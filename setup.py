@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name="streamlit_labelstudio",
+    name="streamlit-labelstudio",
     version="0.0.1",
     author="",
     author_email="",
