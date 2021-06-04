@@ -5,7 +5,8 @@ A Streamlit component that provides an annotation interface using the [LabelStud
 
 ## Installation
 ```
-pip install streamlit-labelstudio
+cd streamlit_labelstudio/frontend/ && npm install && npm run build
+cd ../../ && pip install streamlit-labelstudio
 ```
 
 ## Usage
